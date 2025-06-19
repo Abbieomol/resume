@@ -1,0 +1,50 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #141314; 
+  background: #b75ca8; 
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background: #9f0383;
+  color: rgb(14, 13, 13);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: rgb(18, 17, 17);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.Leila-image img,
+.about-image img,
+.project img {
+  width: 50%;
+  max-width: 600px;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+footer {
+  background: #9f0383; 
+  color: rgb(16, 16, 16);
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}

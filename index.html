@@ -47,35 +47,4 @@
       }
     })();
 
-    // Simple form validation for compatibility
-    (function () {
-      var form = document.getElementById('contact-form');
-      if (form) {
-        form.addEventListener('submit', function (e) {
-          var name = document.getElementById('name');
-          var email = document.getElementById('email');
-          var comment = document.getElementById('comment');
-          var valid = true;
-
-          if (!name.value.trim()) {
-            name.focus();
-            valid = false;
-          } else if (!email.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
-            email.focus();
-            valid = false;
-          } else if (!comment.value.trim()) {
-            comment.focus();
-            valid = false;
-          }
-
-          if (!valid) {
-            e.preventDefault();
-            alert('Please fill in all fields with valid information.');
-          }
-        });
-      }
-    })();
-  </script>
-</body>
-
-</html>
+    

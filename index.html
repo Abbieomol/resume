@@ -13,14 +13,13 @@
   <header>
     <nav id="navbar">
       <div class="logo">Leila Abbie</div>
-      <button id="menu-toggle">☰</button>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <button id="menu-toggle" aria-label="Open navigation menu" aria-controls="nav-links" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
     </nav>
   </header>
 
@@ -95,15 +94,15 @@
     <section id="contact">
       <h2>Contact Me</h2>
       <h5>I'd love to hear your feedback and how we can work together.</h5>
-      <form id="contact-form">
+      <form id="contact-form" autocomplete="off" novalidate>
         <label for="name">Name:</label>
-        <input type="text" id="name" required />
+        <input type="text" id="name" name="name" required aria-required="true" />
 
         <label for="email">Email:</label>
-        <input type="email" id="email" required />
+        <input type="email" id="email" name="email" required aria-required="true" />
 
         <label for="comment">Comment:</label>
-        <textarea id="comment" rows="4" required></textarea>
+        <textarea id="comment" name="comment" rows="4" required aria-required="true"></textarea>
 
         <button type="submit">Send</button>
       </form>
@@ -114,7 +113,56 @@
     <p>© 2025 Leila Abbie. All rights reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Simple menu toggle for mobile compatibility
+    (function () {
+      var menuToggle = document.getElementById('menu-toggle');
+      var navLinks = document.getElementById('nav-links');
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function () {
+          var expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !expanded);
+          navLinks.style.display = navLinks.style.display === 'block' ? 'none' : 'block';
+        });
+        // Hide menu on resize for desktop
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 768) {
+            navLinks.style.display = '';
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    })();
+
+    // Simple form validation for compatibility
+    (function () {
+      var form = document.getElementById('contact-form');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          var name = document.getElementById('name');
+          var email = document.getElementById('email');
+          var comment = document.getElementById('comment');
+          var valid = true;
+
+          if (!name.value.trim()) {
+            name.focus();
+            valid = false;
+          } else if (!email.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
+            email.focus();
+            valid = false;
+          } else if (!comment.value.trim()) {
+            comment.focus();
+            valid = false;
+          }
+
+          if (!valid) {
+            e.preventDefault();
+            alert('Please fill in all fields with valid information.');
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 
 </html>

@@ -35,6 +35,11 @@ nav {
 
 .Leila-image img,
 .about-image img,
+.home-image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+}
 .project img {
   width: 50%;
   max-width: 600px;
